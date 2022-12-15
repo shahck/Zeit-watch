@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container" style="margin: 0 auto;width: 50%;padding: 50px;background: #f1f1f1;margin-top: 50px;margin-bottom: 50px;">
+    <div class="text-center">
+        <h4>Your Order has been cancelled as per your request</h4>
+        <p>If you paid your amount will be refund within 1 hour.<br> If it's not refunded within time period mail to <span class="text-danger">zeitwatchsupport@gmail.com</span></p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'dashboard' %}" class="btn btn-info text-center">Back to Home</a>
+    </div>
+</div>
+
+
+{% endblock content %}

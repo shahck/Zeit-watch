@@ -1,0 +1,42 @@
+{% extends 'base.html' %} 
+{% block title %} Update Coupon {% endblock title %}
+{% block content %}
+
+
+<section class="section-content padding-y bg">
+  <div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-6 card p-5">
+        <h1 class="text-center h2 mb-4">Update Coupon</h1>
+        <form action="{% url 'update_coupon' coupon.id %}" method="POST">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="category_name">Coupon Code</label>
+              <input type="text" class="form-control" id="category_name" name="coupon_code" value="{{ coupon.coupon_code }}" required />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="category_slug">Minimum Amount</label>
+              <input type="number" class="form-control" id="category_slug" name="minimum_amount" aria-describedby="minimum_amount" value="{{ coupon.minimum_amount }}" required />
+              
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="category_slug">Discount Price</label>
+                <input type="number" class="form-control" id="discount_price" name="discount_price" aria-describedby="discount_price" value="{{ coupon.discount_price }}" required />
+                
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="category_description">Expiry Date</label>
+            <input type="date" class="form-control" id="expiry_at" name="expiry_at" >{{ coupon.expiry_at }}</input>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

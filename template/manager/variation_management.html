@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten mt-3 bg">
+  <div class="container">
+    <h1 class="text-center h2 mb-4">Variation Management</h1>
+    <div class="d-flex mb-3 justify-content-end">
+      <form action="{% url 'manage_variation' %}" class="search" method="POST">
+        {% csrf_token %} 
+        <div class="input-group w-100">
+          <input type="text" class="form-control" style="width: 60%" placeholder="Search" name="keyword" />
+
+          <div class="input-group-append">
+            <button class="btn btn-dark" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <div>
+        <a href="{% url 'add_variation' %}" class="btn btn-success ml-4">Add</a>
+      </div>
+    </div>
+    <div class="row">
+      {% include 'includes/admindashboardsidebar.html' %}
+      <main class="col-md-9">
+        <table class="table table-borderless">
+          <thead>
+            <tr class="mb-4">
+              <th scope="col">ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Value</th>
+              <th scope="col">Active</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for variation in variations %}
+            <tr>
+              <th scope="row">{{ variation.id }}</th>
+              <td>{{ variation.product | capfirst}}</td>
+              <td>{{ variation.variation_category }}</td>
+              <td>{{ variation.variation_value }}</td>
+              <td>
+                {% if variation.is_active %}
+                <i class="fas fa-check-circle" style="color: #28a745"></i>
+                {% else %}
+                <i class="fas fa-times-circle" style="color: #c21010"></i>
+                {% endif %}
+              </td>
+              <td><a href="{% url 'update_variation' variation.id %}" class="btn btn-sm btn-info">Update <i class="fa fa-wrench" aria-hidden="true"></i></a></td>
+              <td><a href="{% url 'delete_variation' variation.id %}" id="sweet" onclick="return confirm('Are you sure to want to remove this variation?')" class="btn btn-sm btn-danger">Delete <i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- order-group.// -->
+        <div class="container">
+          <nav class="mt-4" aria-label="Page navigation sample">
+            {% if variations.has_other_pages %}
+            <ul class="pagination">
+              {% if variations.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page={{ variations.previous_page_number }}">Previous</a></li>
+              {% else %}
+              <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+              {% endif %} {% for page_number in variations.paginator.page_range %} {% if variations.number == page_number %}
+              <li class="page-item active"><a class="page-link" href="#">{{ page_number }}</a></li>
+              {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a></li>
+              {% endif %} {% endfor %} {% if variations.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{ variations.next_page_number }}">Next</a></li>
+              {% else %}
+              <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+              {% endif %}
+            </ul>
+            {% endif %}
+          </nav>
+        </div>
+      </main>
+    </div>
+    <!-- row.// -->
+  </div>
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+{% endblock content %}
