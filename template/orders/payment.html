@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block script %}
 .text-font{
     font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
@@ -54,212 +55,209 @@
 
 
 <section class="section-content padding-y bg">
-<div class="container">
+  <div class="container">
 
 <!-- ============================ COMPONENT 1 ================================= -->
-<h4 class="text-center mb-10">Review your order and Make Payment</h4>
-<div class="row">
+  <h4 class="text-center mb-10">Review your order and Make Payment</h4>
+  <div class="row">
  
 
   <!-- ============================ COUPEN start ================================= -->
-  
-    <div class="col-md-8">
-      {% comment %} <div class="card mb-4 accordion" id="accordionExample">
-        <div class="card body accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="btn btn-info mt-2 mb-2 ml-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              COUPEN
-            </button>
-          </h2>
+    <div class="row">
+      <div class="col-md-8">
+      
 
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              <div class="form-outline d-flex">
-                <input type="text" id="form1" class="form-control" name="coupon_code"/>
-                <label class="form-label" for="form1">Enter code</label>
-                <button class="btn btn-dark" type="button" id="apply_coupon">Apply</button>
+      <!-- <form action="{% url 'apply_coupon' %}" class="form-inline mt-5" method="post">
+        {% csrf_token %}
+        <div class="form-group mb-2"> -->
+          <!-- <label for="staticEmail2" class="sr-only">Email</label> -->
+          <!-- <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Enter the Coupen code"> -->
+        <!-- </div>
+        <div class="form-group mx-sm-3 mb-2"> -->
+          <!-- <label for="text" class="sr-only">Password</label> -->
+          <!-- <input type="text" name="coupon_code" class="form-control" id="text" placeholder="COUPEN CODE" required="true">
+        </div>
+        <button type="button" id="apply_coupon" class="btn btn-primary mb-2">APPLY</button>
+      </form> -->
+      
+        <div class="card mb-4 accordion" id="accordionExample">
+          <div class="card body accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <div class="accordion-button collapsed text-uppercase text-font h4" type="button"
+                data-mdb-toggle="collapse" data-mdb-target="#collapseOne" aria-expanded="false"
+                aria-controls="collapseOne">
+                Promo Code
+              </div>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne"
+              data-mdb-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="form-outline d-flex">
+                  <input type="text" id="form1" class="form-control" name="coupon_code" placeholder="Enter Coupon code"/>
+                  <label class="form-label" for="form1"></label>
+                  <button class="btn btn-dark ml-3" type="button" id="apply_coupon">Apply</button>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
-      </div> {% endcomment %}
+                
 
-      <form action="{% url 'apply_coupon' %}" class="form-inline mt-5">
-        <div class="form-group mb-2">
-          {% comment %} <label for="staticEmail2" class="sr-only">Email</label> {% endcomment %}
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Enter the Coupen code">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-          {% comment %} <label for="text" class="sr-only">Password</label> {% endcomment %}
-          <input type="text" class="form-control" id="text" placeholder="COUPEN CODE" required="true">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">APPLY</button>
-      </form>
+   
 
      
-      <div class="card mb-4 accordion" id="accordionExample">
-        <div class="card body accordion-item">
-          <!-- {% comment %} <h2 class="accordion-header" id="headingOne">
-            <div class="accordion-button collapsed text-uppercase text-font h4" type="button"
-              data-mdb-toggle="collapse" data-mdb-target="#collapseOne" aria-expanded="false"
-              aria-controls="collapseOne">
-              Promo/Student Code or Vouchers
-            </div>
-          </h2> {% endcomment %}
-          {% comment %} <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-            data-mdb-parent="#accordionExample">
-            <div class="accordion-body">
-              <div class="form-outline d-flex">
-                <input type="text" id="form1" class="form-control" />
-                <label class="form-label" for="form1">Enter code</label>
-              </div>
-            </div>
-          </div> {% endcomment %} -->
+        <div class="card mb-4 accordion" id="accordionExample">
+          <div class="card body accordion-item">
+            
+          </div>
+        </div>
+        <!-- <div class="card mb-4"> -->
         </div>
       </div>
-      <div class="card mb-4">
-      </div>
-    </div>
+    
 
     
 
     <!-- ============================ COUPEN end ================================= -->
     
-	<aside class="col-lg-8">
-        <div class="card">
-            <h5 class="card-header">Billing Address</h5>
-            <div class="card-body">
-              <p class="card-text mb-0">{{order.full_name}}</p>
-              <p class="card-text mb-0">{{order.full_address}}</p>
-              <p class="card-text mb-0">{{order.city}}, {{order.state}}</p>
-              <p class="card-text mb-0">{{order.country}}</p>
-              <p class="card-text mb-0">{{order.email}}</p>
-              <p class="card-text mb-0">{{order.phone}}</p>
-              {% if order.order_note %}
-                <b>Order Note: </b> {{order.order_note}}
-              {% endif %}
-              
-            </div>
-          </div>
+    <aside class="col-lg-8">
           <div class="card">
-            <h5 class="card-header">Payment Method</h5>
-            <div class="card-body">
-              <p class="card-text">RazorPay</p>
+              <h5 class="card-header">Billing Address</h5>
+              <div class="card-body">
+                <p class="card-text mb-0">{{order.full_name}}</p>
+                <p class="card-text mb-0">{{order.full_address}}</p>
+                <p class="card-text mb-0">{{order.city}}, {{order.state}}</p>
+                <p class="card-text mb-0">{{order.country}}</p>
+                <p class="card-text mb-0">{{order.email}}</p>
+                <p class="card-text mb-0">{{order.phone}}</p>
+                {% if order.order_note %}
+                  <b>Order Note: </b> {{order.order_note}}
+                {% endif %}
+                
+              </div>
             </div>
-          </div>
-          <div class="card">
-            <h5 class="card-header">Review Product</h5>
-            <div class="card-body">
-                <table class="table table-borderless table-shopping-cart">
-                    <thead class="text-muted">
-                    <tr class="small text-uppercase">
-                      <th scope="col">Product</th>
-                      <th scope="col" width="120">Quantity</th>
-                      <th scope="col" width="120">Price</th>
-                      
-                    </tr>
-                    </thead>
-                    <tbody>
-                    
-                    {% for cart_item in cart_items %}
-                    <tr>
-                        <td>
-                            <figure class="itemside align-items-center">
-                                <div class="w-25 aside img-wrap"><img src="{{ cart_item.product.images.url }}" class="img-fluid img-thumbnail"></div>
-                                <figcaption class="info">
-                                    <a href="{{ cart_item.product.get_url }}" class="title text-dark">{{ cart_item.product.product_name }}</a>
-                                    <p class="text-muted small">
-                                        {% if cart_item.variations.all %}
-                                            {% for item in cart_item.variations.all %}
-                                                {{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }} <br>
-                                            {% endfor %}
-                                        {% endif %}
-                                    </p>
-                                </figcaption>
-                            </figure>
-                        </td>
-                        <td class="w-25"> 
-                            <!-- col.// -->
-                            <label for="">{{ cart_item.quantity}}</label>
-                        </td>
-                        <td> 
-                            <div class="price-wrap"> 
-                                <var class="price">{{ cart_item.sub_total }}</var> 
-                                <small class="text-muted"><br>{{ cart_item.product.price }} each </small> 
-                            </div> <!-- price-wrap .// -->
-                        </td>
+            <div class="card">
+              <h5 class="card-header">Payment Method</h5>
+              <div class="card-body">
+                <p class="card-text">RazorPay</p>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-header">Review Product</h5>
+              <div class="card-body">
+                  <table class="table table-borderless table-shopping-cart">
+                      <thead class="text-muted">
+                      <tr class="small text-uppercase">
+                        <th scope="col">Product</th>
+                        <th scope="col" width="120">Quantity</th>
+                        <th scope="col" width="120">Price</th>
                         
-                    </tr>
-                    {% endfor %}
-                    
-                    </tbody>
-                    </table>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      
+                      {% for cart_item in cart_items %}
+                      <tr>
+                          <td>
+                              <figure class="itemside align-items-center">
+                                  <div class="w-25 aside img-wrap"><img src="{{ cart_item.product.images.url }}" class="img-fluid img-thumbnail"></div>
+                                  <figcaption class="info">
+                                      <a href="{{ cart_item.product.get_url }}" class="title text-dark">{{ cart_item.product.product_name }}</a>
+                                      <p class="text-muted small">
+                                          {% if cart_item.variations.all %}
+                                              {% for item in cart_item.variations.all %}
+                                                  {{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }} <br>
+                                              {% endfor %}
+                                          {% endif %}
+                                      </p>
+                                  </figcaption>
+                              </figure>
+                          </td>
+                          <td class="w-25"> 
+                              <!-- col.// -->
+                              <label for="">{{ cart_item.quantity}}</label>
+                          </td>
+                          <td> 
+                              <div class="price-wrap"> 
+                                  <var class="price">{{ cart_item.sub_total }}</var> 
+                                  <small class="text-muted"><br>{{ cart_item.product.price }} each </small> 
+                              </div> <!-- price-wrap .// -->
+                          </td>
+                          
+                      </tr>
+                      {% endfor %}
+                      
+                      </tbody>
+                      </table>
+              </div>
             </div>
-          </div>
 
-	</aside> <!-- col.// -->
-	<aside class="col-lg-4">
+    </aside> <!-- col.// -->
+    <aside class="col-lg-4">
 
-		<div class="card">
-		<div class="card-body">
-			<dl class="dlist-align">
-			  <dt>Total price:</dt>
-			  <dd class="text-right">₹ {{ total }}</dd>
-			</dl>
-			<dl class="dlist-align">
-			  <dt>Tax:</dt>
-			  <dd class="text-right"> ₹ {{ tax }}</dd>
-			</dl>
-			<dl class="dlist-align">
-			  <dt>Total:</dt>
-			  <dd class="text-right text-dark b"><strong>₹ {{ grand_total }}</strong></dd>
-			</dl>
-			<hr>
-			<p class="text-center mb-3">
-				<img src="{% static 'images/misc/payments.png' %}" height="26">
-			</p>
+      <div class="card">
+      <div class="card-body" id="payment_render">
+        <dl class="dlist-align">
+          <dt>Total price:</dt>
+          <dd class="text-right">₹ {{ total }}</dd>
+        </dl>
+        <dl class="dlist-align">
+          <dt>Tax:</dt>
+          <dd class="text-right"> ₹ {{ tax }}</dd>
+        </dl>
+        <dl class="dlist-align">
+          <dt>Total:</dt>
+          <dd class="text-right text-dark b"><strong>₹ {{ grand_total }}</strong></dd>
+        </dl>
+        <hr>
+        <p class="text-center mb-3">
+          <img src="{% static 'images/misc/payments.png' %}" height="26">
+        </p>
 
-       <!-- RazorPay Content -->
-      {% if payment %}
-      <form action="{% url 'payment_status' %}" method="POST">
-        <script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        data-key="{{razorpay_merchant_key}}"
-        data-amount="{{ payment.amount }}"
-        data-currency="INR"
-        data-order_id="{{ payment.id }}"
-        data-buttontext="Make Payment"
-        data-name=""
-        data-description="product"
-        data-image=""
-        data-prefill.name="{{ order.full_name }}"
-        data-prefill.email="{{user.email}}"
-        data-theme.color="#000"
-      ></script>
-      <input type="hidden" custom="Hidden Element" name="hidden">
-      </form>
-      {% endif %}
+        <!-- RazorPay Content -->
+        {% if payment %}
+        <form action="{% url 'payment_status' %}" method="POST">
+          <script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          data-key="{{razorpay_merchant_key}}"
+          data-amount="{{ payment.amount }}"
+          data-currency="INR"
+          data-order_id="{{ payment.id }}"
+          data-buttontext="Make Payment"
+          data-name=""
+          data-description="product"
+          data-image=""
+          data-prefill.name="{{ order.full_name }}"
+          data-prefill.email="{{user.email}}"
+          data-theme.color="#000"
+        ></script>
+        <input type="hidden" custom="Hidden Element" name="hidden">
+        </form>
+        {% endif %}
 
-      <!-- add style to payment button -->
-      <script>
-        var element = document.querySelector('.razorpay-payment-button');
-        element.className += ' btn btn-dark btn-block';
-      </script>
+        <!-- add style to payment button -->
+        <script>
+          var element = document.querySelector('.razorpay-payment-button');
+          element.className += ' btn btn-dark btn-block';
+        </script>
 
-<!-- RazorPay Section End -->
+  <!-- RazorPay Section End -->
 
-			<!-- <a href="{% url 'checkout' %}" class="btn btn-primary btn-block"> Make Payment </a> -->
-			
-		</div> <!-- card-body.// -->
-		</div> <!-- card.// -->
+        <!-- <a href="{% url 'checkout' %}" class="btn btn-primary btn-block"> Make Payment </a> -->
+        
+      </div> <!-- card-body.// -->
+      </div> <!-- card.// -->
 
-</aside> <!-- col.// -->
+  </aside> <!-- col.// -->
 
 
-</div> <!-- row.// -->
+  </div> <!-- row.// -->
 
-<!-- ============================ COMPONENT 1 END .// ================================= -->
-</div>
+  <!-- ============================ COMPONENT 1 END .// ================================= -->
+  </div>
 </section>
 
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% endblock %}
