@@ -12,6 +12,8 @@
 
 <!-- ========================= CHART CONTENT ========================= -->
 
+
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,6 +39,10 @@
 
 <link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
 
+
+
+
+
 <!-- jQuery -->
 <script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
 
@@ -45,28 +51,7 @@
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<script>
-    var availableTags = [];
 
-    $.ajax({
-      method: "GET",
-      url: "/product-list",
-      success: function (response) {
-        startAutocomplete(response);
-
-      }
-    });
-
-    function startAutocomplete(availableTags)
-    {
-        $( "#searchproducts" ).autocomplete({
-        source: availableTags
-        });
-    }
-    
-  </script> 
 
 
 <!-- JavaScript Bundle with Popper -->
@@ -173,7 +158,11 @@ $(document).ready(function() {
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-
+{% comment %} JQUERY {% endcomment %}
+  <script
+  src="https://code.jquery.com/jquery-3.5.0.min.js
+  integrity="sha256-xNzN2a41tkB44Mc/Jz3pT4iU1cmeR0FkXs4pru
+  A crossorigin="anonymous"></script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="{% static 'js/payment.js' %}"></script>
@@ -187,7 +176,9 @@ $(document).ready(function() {
 
   <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 
-  
+  <script src="js/jquery/jquery-2.2.4.min.js"></script>
+
+  <script src="js/active.js"></script>
 
     <!--  navbar  -->
     {% include 'includes/navbar.html' %}
@@ -199,50 +190,16 @@ $(document).ready(function() {
     
     {% endblock %}
 
-    <!-- {% block scripts %}
-    <script>
-      const data = '{{qs_json}}'
-      console.log(data)
-
-      const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
-      console.log(rdata)
-
-      const input = document.getElementById('searrch_here')
-      console.log(input)
-
-      let filteredArr = []
-
-      input.addEventListener('keyup', ()=>{
-        box_innerHTML = ""
-        filteredArr = rdata.filter(info=> info['name'].includes(e.target.value))
-        console.log(filteredArr)
-        if (filteredArr.length > 0){
-          filteredArr.map(item=>{
-            box.innerHTML += `<br>${item['name']}</b><br>`
-          })
-        } else {
-          box.innerHTML = "<b>No results Found...</b>"
-        }
-      })
-    </script>
-    {% endblock scripts %} -->
+    
  
 
     <!-- footer -->
 
     {% include 'includes/footer.html' %}
 
-<!-- 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
-    <!-- <script>
-      $( function() {
-        $( "#product" ).autocomplete({
-          source: '{% url 'search' %}'
-        })
-      } );
-      </script> -->
 
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 
 </body>
 </html>

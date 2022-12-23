@@ -32,7 +32,7 @@
           <div class="text-right">
           
               <a class="btn btn-info m-2" href="{%url 'create-pdf'%}">Export to PDF</a>
-              <a class="btn btn-info m-2" href="{%url 'create-csv'%}">Export to CSV</a>
+              
           </div>
           <table class="table table-borderless mt-5">
             <thead>
@@ -110,60 +110,7 @@
 <!-- ========================= Report Button CONTENT end ========================= -->
 
 
-        <!-- <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">Order Number</th>
-              <th scope="col">User</th>
-              <th scope="col">Billing Name</th>
-              <th scope="col">Total</th>
-              <th scope="col">Date</th>
-              <th scope="col">Status</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for order in orders %}
-            <tr>
-              <th scope="row"><a href="{% url 'order_detail' order.order_number %}">{{ order.order_number }}</a></th>
-              <td>{{ order.user }}</td>
-              <td>{{ order.full_name }}</td>
-              <td>{{ order.order_total }}</td>
-              <td>{{order.created_at}}</td>
-              <td>
-                {% if order.status == 'Order Cancelled' %}
-                <span class="text-danger font-weight-bold">{{ order.status }}</span>
-                {% elif order.status == 'Delivered Successfully' %}
-                <span class="text-success font-weight-bold">{{ order.status }}</span>
-                {% elif order.status == 'Pending' %}
-                <span class="text-muted font-weight-bold">{{ order.status }}</span>
-                {% else %} <span class="text-info font-weight-bold">{{ order.status }}</span>
-                {% endif %}
-              </td> -->
-
-
-
-              <!-- <td>
-                {% if order.status == 'Pending' %}
-                <a href="{% url 'accept_order' order.order_number %}" class="btn btn-sm btn-info">Accept</a>
-                {% elif order.status == 'Order Accepted' %}
-                <a href="{% url 'complete_order' order.order_number %}" class="btn btn-sm btn-success">Complete</a>
-                {% endif %}
-              </td>
-              <td>
-                {% if order.status == 'Pending' or order.status == 'Order Accepted' %}
-                <a href="{% url 'admin_cancel_order' order.order_number %}" class="btn btn-sm btn-danger">Cancel</a>
-                {% endif %}
-              </td> -->
-
-
-
-
-            <!-- </tr>
-            {% endfor %}
-          </tbody>
-        </table> -->
+        
         <!-- order-group.// -->
       </main>
     </div>

@@ -19,6 +19,8 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 # from django.http import HttpResponseBadRequest
 from proj import settings
+from django.utils import timezone
+
 
 # Create your views here.
 
@@ -261,80 +263,18 @@ def payment_status(request):
 
 
 # COUPEN 
-# @login_required(login_url='signin')
-# def apply_coupon(request):
-#     coupon_code = request.POST.get('coupon_code', False)
-#     print(request.POST)
-    # is_private = request.POST.get('is_private', False)
-    # if Coupon.objects.filter(coupon_code__exact=coupon_code, is_active=True).exists():
-    #     coupon = Coupon.objects.filter(coupon_code__exact=coupon_code, is_active=True)
-    #     order_number = request.POST['order_number']
-    #     order = Order.objects.get(order_number=order_number)
-    #     print('ABOVE THE ERROR================================================')
-    #     if not Order.objects.filter(user=request.user, coupon=coupon[0]):
-    #         print('THE COUPON DOESNOT USED====================================')
-    #         if coupon.filter(expiry_at__gte=datetime.timezone.now()):
-    #             if order.order_total > coupon[0].minimum_amount:
-    #                 print('THIS IS MORETHAN MINIMUM AMOUNT')
-    #                 order.coupon = coupon[0]
-    #                 print(order.coupon)
-    #                 order.coupon_discount = coupon[0].discount_price
-    #                 print(order.coupon_discount)
-    #                 order.order_total -= coupon[0].discount_price
-    #                 print(order.order_total)
-    #                 order.save()
-    #                 messages = "Coupon is Applied"
-    #                 print(messages)
-    #                 current_user = request.user
-    #                 cart_items = CartItemAdmin.objects.filter(user=current_user)
-    #                 tax = 0
-    #                 grand_total = 0
-    #                 for cart_item in cart_items:
-    #                     grand_total += (cart_item.product.price *
-    #                                      cart_item.quantity)
-    #                 tax = (2*grand_total)/100
-    #                 sub_total = grand_total-tax
-    #                 coupon_discount = coupon[0].discount_price
-    #                 grand_total -= coupon_discount
-
-    #                 context = {
-    #                     'order': order,
-    #                     'cart_items': cart_items,
-    #                     'grand_total': grand_total,
-    #                     'tax': tax,
-    #                     'sub_total': sub_total,
-    #                     'coupon_discount': coupon_discount
-    #                 }
-
-    #                 t = render_to_string('orders/renderpayment.html', context)
-    #                 print(" THIS IS BLELOW THE T")
-    #                 return JsonResponse({'data': t, 'msg': messages})
-
-    #             else:
-    #                 messages = "You need to purchase minimum amount of " + str(coupon[0].minimum_amount) + " to apply this coupon"
-    #                 return JsonResponse({'msg': messages})
-    #         else:
-    #             messages = "Coupon is Expired"
-    #             return JsonResponse({'msg': messages})
-    #     else:
-    #         print('THE COUPON IS ALREADY IS USED')
-    #         messages = "Coupon is Already is used"
-    #         return JsonResponse({'msg': messages})
-    # else:
-    #     messages = "Coupon is Invalid"
-    #     return JsonResponse({'msg': messages, 'coupon': coupon_code})
 
 @login_required(login_url='login')
 def apply_coupon(request):
     coupon_code = request.GET['coupon_code']
     if Coupon.objects.filter(coupon_code__exact=coupon_code, is_active=True).exists():
         coupon = Coupon.objects.filter(coupon_code__exact=coupon_code, is_active=True)
-        order_number = request.GET['order_number']
+        order_number = request.session['order_number']
         order = Order.objects.get(order_number=order_number)
         print('ABOVE THE ERROR================================================')
         if not Order.objects.filter(user=request.user, coupon=coupon[0]):
             print('THE COUPON DOESNOT USED================================================================================')
-            if coupon.filter(expiry_at__gte=datetime.timezone.now()):
+            if coupon.filter(expiry_at__gte=timezone.now()):
                 if order.order_total > coupon[0].minimum_amount:
                     print('THIS IS MORETHAN MINIMUM AMOUNT')
                     order.coupon = coupon[0]

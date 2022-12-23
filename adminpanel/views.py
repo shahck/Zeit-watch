@@ -60,29 +60,6 @@ def pdf_report_create(request):
     return response
 
 
-def csv_report_create(request):
-    orders = OrderProduct.objects.all()
-    orders = Order.objects.filter(is_ordered=True).order_by('-order_number')
-
-    template_path = 'manager/csv.html'
-
-    context = {'orders': orders}
-
-    response = HttpResponse(content_type='application/csv')
-
-    response['Content-Disposition'] = 'attachment; filename="products_report.csv"'
-
-    template = get_template(template_path)
-
-    html = template.render(context)
-
-    # create a pdf
-    pisa_status = pisa.CreatePDF(
-       html, dest=response)
-    # if error then show some funy view
-    if pisa_status.err:
-       return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    return response
 
 
 

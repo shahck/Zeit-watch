@@ -36,7 +36,7 @@ urlpatterns = [
     path('admin_orders/', views.admin_order, name='admin_orders'),
 
     path('create-pdf', views.pdf_report_create,name='create-pdf'),
-    path('create-csv', views.csv_report_create,name='create-csv'),
+    
     
     
 

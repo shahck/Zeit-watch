@@ -79,7 +79,9 @@
         </div>
         <button type="button" id="apply_coupon" class="btn btn-primary mb-2">APPLY</button>
       </form> -->
-      
+      <!-- {% comment %} ===========================Coupon========================= {% endcomment %} -->
+
+
         <div class="card mb-4 accordion" id="accordionExample">
           <div class="card body accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -102,9 +104,10 @@
 
           </div>
         </div>
+        <span><h5 id="error">pottan shaheen</h5></span> 
                 
 
-   
+   <!-- {% comment %} ===========================Coupon End========================= {% endcomment %} -->
 
      
         <div class="card mb-4 accordion" id="accordionExample">
@@ -197,56 +200,56 @@
     <aside class="col-lg-4">
 
       <div class="card">
-      <div class="card-body" id="payment_render">
-        <dl class="dlist-align">
-          <dt>Total price:</dt>
-          <dd class="text-right">₹ {{ total }}</dd>
-        </dl>
-        <dl class="dlist-align">
-          <dt>Tax:</dt>
-          <dd class="text-right"> ₹ {{ tax }}</dd>
-        </dl>
-        <dl class="dlist-align">
-          <dt>Total:</dt>
-          <dd class="text-right text-dark b"><strong>₹ {{ grand_total }}</strong></dd>
-        </dl>
-        <hr>
-        <p class="text-center mb-3">
-          <img src="{% static 'images/misc/payments.png' %}" height="26">
-        </p>
+        <div class="card-body" id="payment_render">
+          <dl class="dlist-align">
+            <dt>Total price:</dt>
+            <dd class="text-right">₹ {{ total }}</dd>
+          </dl>
+          <dl class="dlist-align">
+            <dt>Tax:</dt>
+            <dd class="text-right"> ₹ {{ tax }}</dd>
+          </dl>
+          <dl class="dlist-align">
+            <dt>Total:</dt>
+            <dd class="text-right text-dark b"><strong>₹ {{ grand_total }}</strong></dd>
+          </dl>
+          <hr>
+          <p class="text-center mb-3">
+            <img src="{% static 'images/misc/payments.png' %}" height="26">
+          </p>
 
-        <!-- RazorPay Content -->
-        {% if payment %}
-        <form action="{% url 'payment_status' %}" method="POST">
-          <script
-          src="https://checkout.razorpay.com/v1/checkout.js"
-          data-key="{{razorpay_merchant_key}}"
-          data-amount="{{ payment.amount }}"
-          data-currency="INR"
-          data-order_id="{{ payment.id }}"
-          data-buttontext="Make Payment"
-          data-name=""
-          data-description="product"
-          data-image=""
-          data-prefill.name="{{ order.full_name }}"
-          data-prefill.email="{{user.email}}"
-          data-theme.color="#000"
-        ></script>
-        <input type="hidden" custom="Hidden Element" name="hidden">
-        </form>
-        {% endif %}
+          <!-- RazorPay Content -->
+          {% if payment %}
+          <form action="{% url 'payment_status' %}" method="POST">
+            <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{razorpay_merchant_key}}"
+            data-amount="{{ payment.amount }}"
+            data-currency="INR"
+            data-order_id="{{ payment.id }}"
+            data-buttontext="Make Payment"
+            data-name=""
+            data-description="product"
+            data-image=""
+            data-prefill.name="{{ order.full_name }}"
+            data-prefill.email="{{user.email}}"
+            data-theme.color="#000"
+          ></script>
+          <input type="hidden" custom="Hidden Element" name="hidden">
+          </form>
+          {% endif %}
 
-        <!-- add style to payment button -->
-        <script>
-          var element = document.querySelector('.razorpay-payment-button');
-          element.className += ' btn btn-dark btn-block';
-        </script>
+          <!-- add style to payment button -->
+          <script>
+            var element = document.querySelector('.razorpay-payment-button');
+            element.className += ' btn btn-dark btn-block';
+          </script>
 
-  <!-- RazorPay Section End -->
+    <!-- RazorPay Section End -->
 
-        <!-- <a href="{% url 'checkout' %}" class="btn btn-primary btn-block"> Make Payment </a> -->
-        
-      </div> <!-- card-body.// -->
+          <!-- <a href="{% url 'checkout' %}" class="btn btn-primary btn-block"> Make Payment </a> -->
+          
+        </div> <!-- card-body.// -->
       </div> <!-- card.// -->
 
   </aside> <!-- col.// -->
@@ -259,5 +262,5 @@
 </section>
 
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 {% endblock %}
