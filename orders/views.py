@@ -288,13 +288,25 @@ def apply_coupon(request):
                     print(messages)
                     current_user = request.user
                     cart_items = CartItem.objects.filter(user=current_user)
+                    # tax = 0
+                    # grand_total = 0
+                    # for cart_item in cart_items:
+                    #     grand_total += (cart_item.product.price *
+                    #                      cart_item.quantity)
+                    # tax = (2*grand_total)/100
+                    # sub_total = grand_total-tax
+                    # coupon_discount = coupon[0].discount_price
+                    # grand_total -= coupon_discount
+
                     tax = 0
-                    grand_total = 0
-                    for cart_item in cart_items:
-                        grand_total += (cart_item.product.price *
-                                         cart_item.quantity)
-                    tax = (2*grand_total)/100
-                    sub_total = grand_total-tax
+                    grand_discount_total = 0
+                    total =     0
+                    
+                    for item in cart_items:
+                        total += (item.product.price * item.quantity)
+                        
+                    tax = (2 * total) / 100
+                    grand_total = total + tax
                     coupon_discount = coupon[0].discount_price
                     grand_total -= coupon_discount
 
@@ -303,7 +315,8 @@ def apply_coupon(request):
                         'cart_items': cart_items,
                         'grand_total': grand_total,
                         'tax': tax,
-                        'sub_total': sub_total,
+                        'total': total,
+                        # 'grand_discount_total' : grand_discount_total,
                         'coupon_discount': coupon_discount
                     }
 
