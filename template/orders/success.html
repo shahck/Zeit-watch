@@ -78,7 +78,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for ordered_product in ordered_products %}
+                      {% for ordered_product in ordered_detail %}
                       <tr>
                         <td>{{ ordered_product.product.product_name }}</td>
                         <td class="text-center">{{ ordered_product.quantity }}</td>
@@ -93,12 +93,12 @@
                       </tr>
                       <tr>
                         <th colspan="2" class="text-right">Tax:</th>
-                        <th class="text-center">₹ {{ tax }}</th>
+                        <th class="text-center">₹ {{ order.tax }}</th>
                       </tr>
 
                       <tr>
                         <th colspan="2" class="text-right">Grand Total:</th>
-                        <th class="text-center">₹ {{ grand_total }}</th>
+                        <th class="text-center">₹ {{ order.order_total }}</th>
                       </tr>
                     </tfoot>
                   </table>

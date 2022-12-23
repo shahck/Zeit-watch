@@ -39,6 +39,7 @@ def payment(request, total=0):
   tax = (2 * total) / 100
   grand_total = total + tax
   
+  
   order_number = request.session['order_number']
   order = Order.objects.get(user=current_user, is_ordered=False,order_number = order_number)
     
@@ -299,7 +300,7 @@ def apply_coupon(request):
                     # grand_total -= coupon_discount
 
                     tax = 0
-                    grand_discount_total = 0
+                    grand_total = 0
                     total =     0
                     
                     for item in cart_items:
