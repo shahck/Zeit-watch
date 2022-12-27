@@ -1,15 +1,15 @@
 <aside class="col-md-3">
     <!--   SIDEBAR   -->
     <ul class="list-group">
-        <a class="list-group-item text-center {% if '/dashboard/' in request.path %}active{% endif %}" href="{% url 'manager_dashboard' %}" > Dashboard <i class="fa fa-database" aria-hidden="true"></i></a>
-        <a class="list-group-item text-center {% if '/manage_user/' in request.path %}active{% endif %}"  href="{% url 'manage_user' %}"> User Management  <i class="fa fa-users" aria-hidden="true"></i> </a>
-        <a class="list-group-item text-center {% if '/manage_product/' in request.path %}active{% endif %}" href="{% url 'manage_product' %}"> Product Management <i class="fa fa-cubes" aria-hidden="true"></i> </a>
-        <a class="list-group-item text-center {% if '/manage_category/' in request.path %}active{% endif %}" href="{% url 'manage_category' %}"> Category Management <i class="fa fa-cube" aria-hidden="true"></i></a> 
-        <a class="list-group-item text-center {% if '/manage_variation/' in request.path %}active{% endif %}" href="{% url 'manage_variation' %}"> Variation Management <i class="fa fa-filter" aria-hidden="true"></i></a> 
-        <a class="list-group-item text-center {% if '/manage_order/' in request.path %}active{% endif %}" href="{% url 'manage_order' %}"> Order Management <i class="fa fa-truck" aria-hidden="true"></i></a> 
-        <a class="list-group-item text-center {% if '/admin_orders/' in request.path %}active{% endif %}" href="{% url 'admin_orders' %}"> Sales <i class="fa fa-bars" aria-hidden="true"></i></a> 
-        <a class="list-group-item text-center {% if '/admin_change_password/' in request.path %}active{% endif %}" href="{% url 'admin_change_password' %}"> Change Password <i class="fa fa-key" aria-hidden="true"></i></a>
-        <a class="list-group-item text-center {% if '/coupon_management/' in request.path %}active{% endif %}" href="{% url 'coupon_management' %}"> Coupon Management <i class="fa fa-bars" aria-hidden="true"></i></a> 
+        <a class="list-group-item text-align-end {% if '/dashboard/' in request.path %}active{% endif %}" href="{% url 'manager_dashboard' %}" > Dashboard <i class="fa fa-database" aria-hidden="true"></i></a>
+        <a class="list-group-item text-align-end {% if '/manage_user/' in request.path %}active{% endif %}"  href="{% url 'manage_user' %}"> User Management  <i class="fa fa-users" aria-hidden="true"></i> </a>
+        <a class="list-group-item text-align-end {% if '/manage_product/' in request.path %}active{% endif %}" href="{% url 'manage_product' %}"> Product Management <i class="fa fa-cubes" aria-hidden="true"></i> </a>
+        <a class="list-group-item text-align-end {% if '/manage_category/' in request.path %}active{% endif %}" href="{% url 'manage_category' %}"> Category Management <i class="fa fa-cube" aria-hidden="true"></i></a> 
+        <a class="list-group-item text-align-end {% if '/manage_variation/' in request.path %}active{% endif %}" href="{% url 'manage_variation' %}"> Variation Management <i class="fa fa-filter" aria-hidden="true"></i></a> 
+        <a class="list-group-item text-align-end {% if '/manage_order/' in request.path %}active{% endif %}" href="{% url 'manage_order' %}"> Order Management <i class="fa fa-truck" aria-hidden="true"></i></a> 
+        <a class="list-group-item text-align-end {% if '/admin_orders/' in request.path %}active{% endif %}" href="{% url 'admin_orders' %}"> Sales <i class="fa fa-bars" aria-hidden="true"></i></a> 
+        <a class="list-group-item text-align-end {% if '/admin_change_password/' in request.path %}active{% endif %}" href="{% url 'admin_change_password' %}"> Change Password <i class="fa fa-key" aria-hidden="true"></i></a>
+        <a class="list-group-item text-align-end {% if '/coupon_management/' in request.path %}active{% endif %}" href="{% url 'coupon_management' %}"> Coupon Management <i class="fa fa-bars" aria-hidden="true"></i></a> 
     </ul>
     <br>
     <a class="btn btn-danger btn-block" href="{% url 'manager_logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a> 

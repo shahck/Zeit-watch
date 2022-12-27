@@ -49,7 +49,7 @@
                     <a href="{% url 'store' %}" class="btn btn-primary store-btn">Store</a> -->
 
     <div class="container"> 
-      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white mb-3 mt-3">
         <!-- <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
               </div>  <!-- category-wrap.// -->
           </div> <!-- col.// -->
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse ml-0" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
               <!-- <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -122,46 +122,50 @@
             
           </div>
         </div>
-      </nav>
-    </div>
-
-           <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
-            <div class="container">
-                  <div class="container d-flex justify-content-end mb-3 mb-lg-0">
-                          {% if user.id is None %}
-                            <div class="widget-header">
-                                <small class="title text-muted">Welcome guest!</small>
-                                <div> 
-                                  <a href="{% url 'login' %}" class="text-dark">Sign in</a> <span class="dark-transp"> | </span> 
-                                   <a href="{% url 'register' %}" class="text-dark"> Register</a>
-                                </div>
-                             </div>
-                           {% else %}
-                             <div class="widget-header">
-                                  <small class="title text-muted">Welcome {{user.first_name }}</small>
-                                  <div>
-                                    {% if user.is_admin %} 
-                                      <a href="{% url 'manager_dashboard' %}" class="text-info">Dashboard</a> <span class="dark-transp"> | </span>
-                                      <a href="{% url 'logout' %}" class="text-info"> Logout</a>
-                                    {% else %}
-                                      <a href="{% url 'dashboard' %}" class="text-info">Dashboard</a> <span class="dark-transp"> | </span>
-                                      <a href="{% url 'logout' %}" class="text-info"> Logout</a>
-                                  </div>
+        <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+          <div class="container">
+                <div class="container d-flex mb-3 mb-lg-0 justify-content-end">
+                        {% if user.id is None %}
+                          <div class="widget-header">
+                              <small class="title text-muted">Welcome guest!</small>
+                              <div> 
+                                <a href="{% url 'login' %}" class="text-dark">Sign in</a> <span class="dark-transp"> | </span> 
+                                 <a href="{% url 'register' %}" class="text-dark"> Register</a>
                               </div>
-                              {% endif %}
-                              {% endif %}
+                           </div>
+                         {% else %}
+                           <div class="widget-header">
+                                <small class="title text-muted">Welcome {{user.first_name }}</small>
+                                <div>
+                                  {% if user.is_admin %} 
+                                    <a href="{% url 'manager_dashboard' %}" class="text-info">Dashboard</a> <span class="dark-transp"> | </span>
+                                    <a href="{% url 'logout' %}" class="text-info"> Logout</a>
+                                  {% else %}
+                                    <a href="{% url 'dashboard' %}" class="text-info">Dashboard</a> <span class="dark-transp"> | </span>
+                                    <a href="{% url 'logout' %}" class="text-info"> Logout</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endif %}
+                            {% if user.is_admin %}
+                            {% else %}
                               <a href="{% url 'cart' %}" class="widget-header pl-6 ml-3 text-info">
                                   <div class="icon icon-sm"><i class="fa fa-shopping-cart mt-3"></i>
                                   </div>
                                     <span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
                               </a>
-                              <!-- <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
-                                <div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
-                                <span class="badge badge-pill badge-warning notify">{{cart_count}}</span>
-                              </a> -->
-                          </div> <!-- widgets-wrap.// -->
-                      </div> <!-- col.// -->
-          </div>
+                            {% endif %}
+                            <!-- <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+                              <div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+                              <span class="badge badge-pill badge-warning notify">{{cart_count}}</span>
+                            </a> -->
+                        </div> <!-- widgets-wrap.// -->
+                    </div> <!-- col.// -->
+        </div>
+      </nav>
+    </div>
+
+           
           </div> <!-- row.// -->
       </div> <!-- container.// -->
   </section> <!-- header-main .// -->
