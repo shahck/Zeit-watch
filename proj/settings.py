@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -89,9 +89,9 @@ AUTH_USER_MODEL = 'accounts.Accounts'
 DATABASES = {
    'default': {
        'ENGINE' : 'django.db.backends.postgresql',
-       'NAME' : 'zeit',
-       'USER' : 'shaheen',
-       'PASSWORD' : 'password',
+       'NAME' : 'w',
+       'USER' : 'postgres',
+       'PASSWORD' : 'shaheen',
        'HOST' : 'localhost',
        
    }
