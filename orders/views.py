@@ -40,8 +40,8 @@ def payment(request, total=0):
   grand_total = total + tax
 
 #   coupon = Coupon.objects.filter( is_active=True)
-#   coupon_discount = coupon[0].discount_price
-#   grand_total -= coupon_discount
+  # coupon_discount = coupon[0].discount_price
+  # grand_total -= coupon_discount
   
   order_number = request.session['order_number']
   order = Order.objects.get(user=current_user, is_ordered=False,order_number = order_number)

@@ -40,6 +40,10 @@ $(document).ready(function () {
 
 
 
+    
+
+
+
     //Remove Cart
     // $(document).on('click', '#remove_cart_item',function () {
 

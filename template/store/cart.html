@@ -91,9 +91,39 @@
 	</td>
 	<td class="text-right">
 		<!-- <button class="btn btn-dark ml-3" type="button" id="remove_cart">Remove</button>  -->
-	<a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}" id="remove_cart_item" onclick="return confirm('Are you sure want to remove this item?')" class="btn btn-danger"> Remove</a>
+		<a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}"
+			id="remove_cart_item" onclick="return confirmDelete()" class="btn btn-danger">
+			Remove</a>
+			
+			{% comment %} <button class="btn btn-dark ml-3" type="button" id="remove_cart_item" onclick="confirmDelete()">Apply</button> {% endcomment %}
 	</td>
 </tr>
+		<script>
+			$(document).ready(function () {
+				$(document).on('click', '#remove_cart_item', function confirmDelete() {
+					// $.ajax({
+            			// url: "/cart/remove_cart_item/",
+
+						swal({
+							title: "Are you sure want to remove?",
+							// text: "Once deleted, you will not be able to recover this imaginary file!",
+							icon: "warning",
+							buttons: ["Cancel","Delete"]
+						})
+							.then((remove_cart_item) => {
+								if (remove_cart_item) {
+									swal("Your product has been removed!", {
+										icon: "success",
+									});
+									return true;
+								} else {
+									// swal("Your imaginary file is safe!");
+									return false;
+								}
+						});
+				});
+			});
+		</script>
 {% endfor %}
 
 </tbody>

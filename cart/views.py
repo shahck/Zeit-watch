@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem
 from store.models import Product, Variation
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 
@@ -175,8 +175,25 @@ def remove_cart_item(request,product_id,cart_item_id):
     else:
         cart= Cart.objects.get(cart_id = _cart_id(request))
         cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
+    
     cart_item.delete()
     return redirect('cart')
+    # return JsonResponse('cart')
+
+
+
+# def remove_cart_item(request,product_id,cart_item_id):
+#       if request.method == 'POST':
+#         product_id = request.POST.get('product_id')
+#         cart = request.session.get('cart', {})
+#         if product_id in cart:
+#             del cart[product_id]
+#             request.session['cart'] = cart
+#             return JsonResponse({'cart_total': len(cart)})
+#         return redirect('cart')
+
+
+
 
 def cart(request, total=0, quantity=0, cart_items=None):
     try:
