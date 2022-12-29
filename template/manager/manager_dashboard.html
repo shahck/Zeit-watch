@@ -11,43 +11,8 @@
         {% include 'includes/admindashboardsidebar.html' %}
        <main class="col-md-9">
 <!-- ========================= CHART CONTENT ========================= -->
-      <div>
-        <div class="w-50">
-          <canvas id="myChart" width="300" height="300"></canvas>
-        </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-        <script>
-          const ctx = document.getElementById('myChart');
-
-          new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-              labels: ['order', 'product', 'user', 'category'],
-              datasets: [{
-                label: 'Total',
-                data: ['{{order_count}}', '{{product_count}}', '{{user_count}}', '{{category_count}}'],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        </script>
-      </div>
-
-<!-- ========================= CHART CONTENT END ========================= -->
-
-
-<!-- ========================= CHART CONTENT 2 ========================= -->
-    <!-- <section>
-      <div class="w-25">
+    <div class="row">
+      <div class="w-50">
         <canvas id="myChart" width="300" height="300"></canvas>
       </div>
 
@@ -57,6 +22,37 @@
         const ctx = document.getElementById('myChart');
 
         new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['order', 'product', 'user', 'category'],
+            datasets: [{
+              label: 'Total',
+              data: ['{{order_count}}', '{{product_count}}', '{{user_count}}', '{{category_count}}'],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+
+    <!-- ========================= CHART CONTENT 2 ========================= -->
+
+      <div class="w-50">
+        <canvas id="myPipeChart" width="300" height="300"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const pipechart = document.getElementById('myPipeChart');
+
+        new Chart(pipechart, {
           type: 'bar',
           data: {
             labels: ['order', 'product', 'user', 'category'],
@@ -75,9 +71,12 @@
           }
         });
       </script>
-    </section> -->
+
+
+    </div>
 
 <!-- ========================= CHART CONTENT END ========================= -->
+
 
 
 
